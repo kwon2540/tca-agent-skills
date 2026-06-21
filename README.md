@@ -2,7 +2,7 @@
 
 Reusable Agent Skills for building, reviewing, testing, and migrating Swift features that use Point-Free's Composable Architecture (TCA).
 
-The `tca` skill is compatible with tools that implement the Agent Skills standard, including Gemini CLI and Codex. It uses progressive disclosure: the main skill defines current practices and routes the agent to focused references only when needed.
+The `tca` skill is compatible with tools that implement the Agent Skills standard, including Gemini CLI, Codex, Claude Code, and Google Antigravity. It uses progressive disclosure: the main skill defines current practices and routes the agent to focused references only when needed.
 
 ## Contents
 
@@ -41,6 +41,21 @@ https://github.com/kwon2540/tca-agent-skills/tree/main/skills/tca
 
 Codex installs user skills under `~/.agents/skills`, making the skill available across repositories.
 
+## Install with Claude Code
+
+Install for your user account so the skill is available in every project:
+
+```bash
+npx skills add kwon2540/tca-agent-skills \
+  --skill tca \
+  --agent claude-code \
+  --global
+```
+
+Claude Code discovers personal skills under `~/.claude/skills`. Remove `--global` for a project-only installation under `.claude/skills`.
+
+After installation, invoke the skill with `/tca` or ask Claude for a task that matches the skill description. Claude Code detects skill changes live, but you should restart it if the top-level skills directory did not exist when the session started. See the [Claude Code skills documentation](https://code.claude.com/docs/en/skills) for discovery and invocation details.
+
 ## Install with Google Antigravity
 
 Install globally for both the Antigravity app and Antigravity CLI:
@@ -59,7 +74,7 @@ Restart Antigravity after installation and run `/skills` to verify that `tca` is
 
 ## Use
 
-Invoke the skill explicitly as `$tca`, or ask for a task that matches its description, for example:
+Invoke the skill using your agent's syntax, such as `$tca` in Codex or `/tca` in Claude Code and Antigravity, or ask for a task that matches its description. For example:
 
 ```text
 Use $tca to review this reducer for cancellation and Swift 6 concurrency issues.
