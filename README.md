@@ -2,7 +2,7 @@
 
 Reusable Agent Skills for building, reviewing, testing, and migrating Swift features that use Point-Free's Composable Architecture (TCA).
 
-The `tca` skill is compatible with tools that implement the Agent Skills standard, including Gemini CLI, Codex, Claude Code, and Google Antigravity. It uses progressive disclosure: the main skill defines current practices and routes the agent to focused references only when needed.
+The `tca` skill is compatible with tools that implement the Agent Skills standard, including Google Antigravity, Codex, Claude Code, and supported Gemini CLI environments. It uses progressive disclosure: the main skill defines current practices and routes the agent to focused references only when needed.
 
 ## Contents
 
@@ -17,7 +17,26 @@ skills/
 
 The references cover reducers, observation, dependencies, effects, cancellation, bindings, navigation, shared state, recursion, and reusable components.
 
-## Install with Gemini CLI
+## Install with Google Antigravity
+
+Google is transitioning consumer Gemini CLI users to Antigravity CLI. Install globally for both the Antigravity app and Antigravity CLI:
+
+```bash
+npx skills add kwon2540/tca-agent-skills \
+  --skill tca \
+  --agent antigravity \
+  --agent antigravity-cli \
+  --global
+```
+
+Remove `--global` for a project-only installation. Project installations use the interoperable `.agents/skills` directory.
+
+Restart Antigravity after installation and run `/skills` to verify that `tca` is available. Antigravity CLI does not currently provide its own terminal command for installing skills, so this repository uses the cross-agent [`skills` CLI](https://github.com/vercel-labs/skills). See the [Antigravity skills documentation](https://antigravity.google/docs/skills) for discovery behavior.
+
+## Install with Gemini CLI (limited legacy support)
+
+> [!IMPORTANT]
+> On June 18, 2026, Gemini CLI stopped serving requests for free individual users and Google AI Pro and Ultra consumer accounts. Google directs those users to Antigravity CLI. The instructions below are retained only for environments where Gemini CLI remains available. See [Google's transition announcement](https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/).
 
 Install for your user account so the skill is available in every project:
 
@@ -55,22 +74,6 @@ npx skills add kwon2540/tca-agent-skills \
 Claude Code discovers personal skills under `~/.claude/skills`. Remove `--global` for a project-only installation under `.claude/skills`.
 
 After installation, invoke the skill with `/tca` or ask Claude for a task that matches the skill description. Claude Code detects skill changes live, but you should restart it if the top-level skills directory did not exist when the session started. See the [Claude Code skills documentation](https://code.claude.com/docs/en/skills) for discovery and invocation details.
-
-## Install with Google Antigravity
-
-Install globally for both the Antigravity app and Antigravity CLI:
-
-```bash
-npx skills add kwon2540/tca-agent-skills \
-  --skill tca \
-  --agent antigravity \
-  --agent antigravity-cli \
-  --global
-```
-
-Remove `--global` for a project-only installation. Project installations use the interoperable `.agents/skills` directory.
-
-Restart Antigravity after installation and run `/skills` to verify that `tca` is available. Antigravity CLI does not currently provide its own terminal command for installing skills, so this repository uses the cross-agent [`skills` CLI](https://github.com/vercel-labs/skills). See the [Antigravity skills documentation](https://antigravity.google/docs/skills) for discovery behavior.
 
 ## Use
 
