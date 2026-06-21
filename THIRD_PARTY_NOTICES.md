@@ -1,6 +1,8 @@
 # Third-Party Notices
 
-Portions of `skills/tca/references` are adapted from the SwiftUI case studies in [Point-Free's swift-composable-architecture](https://github.com/pointfreeco/swift-composable-architecture).
+Portions of `skills/tca/references` are adapted from the publicly available SwiftUI case studies in [Point-Free's swift-composable-architecture](https://github.com/pointfreeco/swift-composable-architecture) repository. The initial source baseline was [version 1.26.0](https://github.com/pointfreeco/swift-composable-architecture/tree/1.26.0/Examples/CaseStudies/SwiftUICaseStudies).
+
+No “Point-Free Way” skill documents or other membership-only materials are included in this repository.
 
 ## swift-composable-architecture
 

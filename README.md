@@ -73,8 +73,16 @@ Use $tca to migrate this navigation flow to current TCA presentation APIs.
 
 The current references were audited against TCA 1.26.0. The skill requires agents to inspect the target project's resolved TCA version and verify official release and migration documentation for version-sensitive work.
 
+## Content and copyright policy
+
+This repository was independently assembled from publicly available, MIT-licensed source code in Point-Free's [`swift-composable-architecture`](https://github.com/pointfreeco/swift-composable-architecture) repository and independently written guidance based on public documentation.
+
+This repository does **not** contain, reproduce, or distribute “The Point-Free Way” skill documents, member-only videos or transcripts, paid downloads, or any other subscription-only Point-Free material.
+
+Point-Free, The Composable Architecture, and related names belong to their respective owners. Their names are used only to identify the open-source project this skill supports. This repository is not affiliated with, sponsored by, or endorsed by Point-Free.
+
+If you are a rights holder and believe any material in this repository has been included improperly, please [open a copyright concern](https://github.com/kwon2540/tca-agent-skills/issues/new) identifying the specific file and the basis of the claim. The maintainer will promptly review a credible notice and remove, replace, or correct the material when appropriate.
+
 ## License and attribution
 
 The repository is licensed under the MIT License. Reference examples are adapted from Point-Free's `swift-composable-architecture` case studies and retain their original MIT attribution in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
-
-This project is not affiliated with or endorsed by Point-Free.
