@@ -41,6 +41,22 @@ https://github.com/kwon2540/tca-agent-skills/tree/main/skills/tca
 
 Codex installs user skills under `~/.agents/skills`, making the skill available across repositories.
 
+## Install with Google Antigravity
+
+Install globally for both the Antigravity app and Antigravity CLI:
+
+```bash
+npx skills add kwon2540/tca-agent-skills \
+  --skill tca \
+  --agent antigravity \
+  --agent antigravity-cli \
+  --global
+```
+
+Remove `--global` for a project-only installation. Project installations use the interoperable `.agents/skills` directory.
+
+Restart Antigravity after installation and run `/skills` to verify that `tca` is available. Antigravity CLI does not currently provide its own terminal command for installing skills, so this repository uses the cross-agent [`skills` CLI](https://github.com/vercel-labs/skills). See the [Antigravity skills documentation](https://antigravity.google/docs/skills) for discovery behavior.
+
 ## Use
 
 Invoke the skill explicitly as `$tca`, or ask for a task that matches its description, for example:
