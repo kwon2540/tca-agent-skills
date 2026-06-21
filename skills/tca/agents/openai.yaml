@@ -1,0 +1,4 @@
+interface:
+  display_name: "TCA"
+  short_description: "Build and review modern Composable Architecture features"
+  default_prompt: "Use $tca to implement or review this feature with current TCA patterns."
