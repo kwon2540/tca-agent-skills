@@ -2,7 +2,7 @@
 
 Reusable Agent Skills for building, reviewing, testing, and migrating Swift features that use Point-Free's Composable Architecture (TCA).
 
-The `tca` skill is compatible with tools that implement the Agent Skills standard, including Google Antigravity, Codex, Claude Code, and supported Gemini CLI environments. It uses progressive disclosure: the main skill defines current practices and routes the agent to focused references only when needed.
+The `tca` skill is compatible with tools that implement the Agent Skills standard, including Google Antigravity, GitHub Copilot in Visual Studio Code, Codex, Claude Code, and supported Gemini CLI environments. It uses progressive disclosure: the main skill defines current practices and routes the agent to focused references only when needed.
 
 ## Contents
 
@@ -60,6 +60,30 @@ https://github.com/kwon2540/tca-agent-skills/tree/main/skills/tca
 
 Codex installs user skills under `~/.agents/skills`, making the skill available across repositories.
 
+## Install with GitHub Copilot in Visual Studio Code
+
+This method requires GitHub CLI 2.90.0 or later because `gh skill` is currently in public preview. Update GitHub CLI first if `gh skill` is not available.
+
+Install for your user account so the skill is available in every VS Code workspace:
+
+```bash
+gh skill install kwon2540/tca-agent-skills tca \
+  --agent github-copilot \
+  --scope user
+```
+
+For a project-only installation, run the following from the repository root:
+
+```bash
+gh skill install kwon2540/tca-agent-skills tca \
+  --agent github-copilot \
+  --scope project
+```
+
+User installations use `~/.copilot/skills`; project installations use the interoperable `.agents/skills` directory.
+
+In Copilot Chat, type `/skills` to verify that `tca` is available. Invoke it with `/tca`, or ask Copilot for a task that matches the skill description. See the [VS Code Agent Skills documentation](https://code.visualstudio.com/docs/agent-customization/agent-skills) and [`gh skill install` manual](https://cli.github.com/manual/gh_skill_install) for current discovery and installation behavior.
+
 ## Install with Claude Code
 
 Install for your user account so the skill is available in every project:
@@ -77,7 +101,7 @@ After installation, invoke the skill with `/tca` or ask Claude for a task that m
 
 ## Use
 
-Invoke the skill using your agent's syntax, such as `$tca` in Codex or `/tca` in Claude Code and Antigravity, or ask for a task that matches its description. For example:
+Invoke the skill using your agent's syntax, such as `$tca` in Codex or `/tca` in GitHub Copilot, Claude Code, and Antigravity, or ask for a task that matches its description. For example:
 
 ```text
 Use $tca to review this reducer for cancellation and Swift 6 concurrency issues.
