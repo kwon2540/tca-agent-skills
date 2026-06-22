@@ -4,6 +4,8 @@ Reusable Agent Skills for building, reviewing, testing, and migrating Swift feat
 
 The `tca` skill is compatible with tools that implement the Agent Skills standard, including Google Antigravity, GitHub Copilot in Visual Studio Code, Codex, Claude Code, and supported Gemini CLI environments. It uses progressive disclosure: the main skill defines current practices and routes the agent to focused references only when needed.
 
+Each installation section provides both a user/global option for all projects and a project-only option for a single repository.
+
 ## Contents
 
 ```text
@@ -19,7 +21,11 @@ The references cover reducers, observation, view actions, dependencies, effects,
 
 ## Install with Google Antigravity
 
-Google is transitioning consumer Gemini CLI users to Antigravity CLI. Install globally for both the Antigravity app and Antigravity CLI:
+Google is transitioning consumer Gemini CLI users to Antigravity CLI.
+
+### User/global installation
+
+Install for both the Antigravity app and Antigravity CLI:
 
 ```bash
 npx skills add kwon2540/tca-agent-skills \
@@ -29,7 +35,18 @@ npx skills add kwon2540/tca-agent-skills \
   --global
 ```
 
-Remove `--global` for a project-only installation. Project installations use the interoperable `.agents/skills` directory.
+### Project-only installation
+
+Run from the repository root:
+
+```bash
+npx skills add kwon2540/tca-agent-skills \
+  --skill tca \
+  --agent antigravity \
+  --agent antigravity-cli
+```
+
+Project installations use the interoperable `.agents/skills` directory.
 
 Restart Antigravity after installation and run `/skills` to verify that `tca` is available. Antigravity CLI does not currently provide its own terminal command for installing skills, so this repository uses the cross-agent [`skills` CLI](https://github.com/vercel-labs/skills). See the [Antigravity skills documentation](https://antigravity.google/docs/skills) for discovery behavior.
 
@@ -37,6 +54,8 @@ Restart Antigravity after installation and run `/skills` to verify that `tca` is
 
 > [!IMPORTANT]
 > On June 18, 2026, Gemini CLI stopped serving requests for free individual users and Google AI Pro and Ultra consumer accounts. Google directs those users to Antigravity CLI. The instructions below are retained only for environments where Gemini CLI remains available. See [Google's transition announcement](https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/).
+
+### User/global installation
 
 Install for your user account so the skill is available in every project:
 
@@ -47,22 +66,48 @@ gemini skills install \
   --scope user
 ```
 
-Use `--scope workspace` instead when a project should own the installation.
+### Project-only installation
+
+Run from the repository root:
+
+```bash
+gemini skills install \
+  https://github.com/kwon2540/tca-agent-skills.git \
+  --path skills/tca \
+  --scope workspace
+```
 
 ## Install with Codex
 
-Invoke `$skill-installer` and ask:
+The following commands require GitHub CLI 2.90.0 or later.
 
-```text
-Install the tca skill from
-https://github.com/kwon2540/tca-agent-skills/tree/main/skills/tca
+### User/global installation
+
+Install for your user account so the skill is available in every project:
+
+```bash
+gh skill install kwon2540/tca-agent-skills tca \
+  --agent codex \
+  --scope user
 ```
 
-Codex installs user skills under `~/.agents/skills`, making the skill available across repositories.
+### Project-only installation
+
+Run from the repository root:
+
+```bash
+gh skill install kwon2540/tca-agent-skills tca \
+  --agent codex \
+  --scope project
+```
+
+User installations use `~/.agents/skills`; project installations use `.agents/skills`. As an alternative for a user installation, invoke `$skill-installer` in Codex and ask it to install `https://github.com/kwon2540/tca-agent-skills/tree/main/skills/tca`. See the [Codex Agent Skills documentation](https://developers.openai.com/codex/skills) for discovery behavior.
 
 ## Install with GitHub Copilot in Visual Studio Code
 
 This method requires GitHub CLI 2.90.0 or later because `gh skill` is currently in public preview. Update GitHub CLI first if `gh skill` is not available.
+
+### User/global installation
 
 Install for your user account so the skill is available in every VS Code workspace:
 
@@ -71,6 +116,8 @@ gh skill install kwon2540/tca-agent-skills tca \
   --agent github-copilot \
   --scope user
 ```
+
+### Project-only installation
 
 For a project-only installation, run the following from the repository root:
 
@@ -86,6 +133,8 @@ In Copilot Chat, type `/skills` to verify that `tca` is available. Invoke it wit
 
 ## Install with Claude Code
 
+### User/global installation
+
 Install for your user account so the skill is available in every project:
 
 ```bash
@@ -95,7 +144,17 @@ npx skills add kwon2540/tca-agent-skills \
   --global
 ```
 
-Claude Code discovers personal skills under `~/.claude/skills`. Remove `--global` for a project-only installation under `.claude/skills`.
+### Project-only installation
+
+Run from the repository root:
+
+```bash
+npx skills add kwon2540/tca-agent-skills \
+  --skill tca \
+  --agent claude-code
+```
+
+Claude Code discovers personal skills under `~/.claude/skills` and project skills under `.claude/skills`.
 
 After installation, invoke the skill with `/tca` or ask Claude for a task that matches the skill description. Claude Code detects skill changes live, but you should restart it if the top-level skills directory did not exist when the session started. See the [Claude Code skills documentation](https://code.claude.com/docs/en/skills) for discovery and invocation details.
 
