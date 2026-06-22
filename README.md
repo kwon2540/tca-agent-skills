@@ -15,7 +15,7 @@ skills/
     └── references/
 ```
 
-The references cover reducers, observation, dependencies, effects, cancellation, bindings, navigation, shared state, recursion, and reusable components.
+The references cover reducers, observation, view actions, dependencies, effects, cancellation, bindings, navigation, shared state, recursion, and reusable components.
 
 ## Install with Google Antigravity
 

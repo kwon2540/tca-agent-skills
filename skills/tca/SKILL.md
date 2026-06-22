@@ -1,6 +1,6 @@
 ---
 name: tca
-description: Build, refactor, review, debug, or test Swift features that use Point-Free's Composable Architecture (TCA), including reducers, observable state, dependencies, effects and cancellation, bindings, presentation and stack navigation, shared state, and TestStore. Use for TCA migrations and deprecation audits, especially Swift 6 concurrency or preparation for TCA 2.0.
+description: Build, refactor, review, debug, or test Swift features that use Point-Free's Composable Architecture (TCA), including reducers, observable state, view actions, dependencies, effects and cancellation, bindings, presentation and stack navigation, shared state, and TestStore. Use for TCA migrations and deprecation audits, especially Swift 6 concurrency or preparation for TCA 2.0.
 ---
 
 # TCA
@@ -19,6 +19,7 @@ Apply current Composable Architecture patterns while matching the version and co
 
 - Model features with `@Reducer`, `@ObservableState`, an `Action` enum, and `Reduce`/reducer-builder composition.
 - Observe `StoreOf<Feature>` directly from SwiftUI. Derive bindings from observable stores.
+- Use `ViewAction` and `@ViewAction(for:)` when a feature should distinguish actions sent by its view from internal responses, child actions, and delegate actions. Keep this separation optional for simple features.
 - Define external work as `@Dependency` values. Prefer `@DependencyClient` plus `DependencyKey` for custom clients, and provide deterministic test values.
 - Express async work with `.run`, send results back as actions, use clocks for time, and give long-running work stable cancellation IDs.
 - Compose child reducers with `Scope`, `.ifLet`, `.forEach`, or stack composition before handling parent logic that depends on child actions.
@@ -42,6 +43,7 @@ Apply current Composable Architecture patterns while matching the version and co
 ### Getting started and composition
 
 - Basic reducer/store: [getting-started-counter.md](references/getting-started-counter.md)
+- View-only actions and `@ViewAction`: [view-actions.md](references/view-actions.md)
 - Alerts and confirmation dialogs: [getting-started-alerts-and-confirmation-dialogs.md](references/getting-started-alerts-and-confirmation-dialogs.md)
 - Animation: [getting-started-animations.md](references/getting-started-animations.md)
 - Binding basics: [getting-started-bindings-basics.md](references/getting-started-bindings-basics.md)
